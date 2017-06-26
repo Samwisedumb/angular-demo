@@ -1,0 +1,8 @@
+<div *ngIf="payment">
+  <h2>{{payment.amount}}</h2>
+  <div><label>date: </label>{{payment.date}}</div>
+  <div>
+    <label>amount: </label>
+    <input [(ngModel)]="payment.amount" placeholder="0" type="number"/>
+  </div>
+</div>
