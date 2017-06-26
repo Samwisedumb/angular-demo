@@ -24,6 +24,6 @@ export class AppComponent implements OnInit {
   }
 
   getPayments(): void {
-    this.payments = this.paymentService.getPayments();
+    this.paymentService.getPayments().then(payments => this.payments = payments);
   }
 }
