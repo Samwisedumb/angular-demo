@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Payment } from './payment';
+import { Payment } from './shared/payment';
 
 @Component({
   selector: 'payment-detail',
