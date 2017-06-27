@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
+import { RouterModule }   from '@angular/router';
 
 import { PaymentService } from './payments/shared/payment.service'
 
@@ -16,7 +17,13 @@ import { PaymentsComponent } from './payments/payments.component'
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot([
+      {
+        path: 'payments',
+        component: PaymentsComponent
+      }
+    ])
   ],
   providers: [
     PaymentService
