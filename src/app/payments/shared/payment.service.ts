@@ -1,18 +1,28 @@
 import { Injectable } from '@angular/core';
+import { Headers, Http } from '@angular/http';
+
+import 'rxjs/add/operator/toPromise';
 
 import { Payment } from './payment'
-import { PAYMENTS } from './mock-payments'
 
 @Injectable()
 export class PaymentService {
-  getPayments(): Promise<Payment[]> {
-    return Promise.resolve(PAYMENTS);
+  private server: string = 'http://localhost:8081';
+  private getPaymentsUrl: string = this.server + '/get/payments/all';
+  private postPaymentsUrl: string = this.server + '/post/payments';
+
+  constructor(private http: Http) { }
+
+  public getPayments(): Promise<Payment[]> {
+    return this.http.get(this.getPaymentsUrl)
+               .toPromise()
+               .then(response => {
+                 return response.json() as Payment[];
+               });
   }
 
-  getPaymentsSlowly(): Promise<Payment[]> {
-    return new Promise(resolve => {
-      // Simulate server latency with 2 second delay
-      setTimeout(() => resolve(this.getPayments()), 2000);
-    });
+  private handleError(error: any): Promise<any> {
+    console.error('An error occurred', error);
+    return Promise.reject(error.message || error);
   }
 }
