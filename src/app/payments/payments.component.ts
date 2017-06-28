@@ -22,6 +22,10 @@ export class PaymentsComponent implements OnInit {
   }
 
   getPayments(): void {
-    this.paymentService.getPayments().then(payments => this.payments = payments);
+    this.paymentService.getPayments().then(payments => this.payments = payments.sort(this.paymentOrdering));
+  }
+
+  private paymentOrdering(first: Payment, second: Payment): number {
+    return first.date < second.date ? -1 : (first.date > second.date ? 1 : 0);
   }
 }
