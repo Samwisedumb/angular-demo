@@ -18,7 +18,15 @@ export class PaymentService {
                .toPromise()
                .then(response => {
                  return response.json().data as Payment[];
-               });
+               })
+               .catch(this.handleError);
+  }
+
+  public createNewPayment(payment: Payment) {
+    return this.http.post(this.postPaymentsUrl, { data: payment })
+               .toPromise()
+               .then(() => payment)
+               .catch(this.handleError);
   }
 
   private handleError(error: any): Promise<any> {

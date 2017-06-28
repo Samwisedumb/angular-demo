@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { Payment } from './shared/payment'
+import { PaymentService } from './shared/payment.service'
 
 @Component({
   selector: 'payment-form',
@@ -8,16 +9,20 @@ import { Payment } from './shared/payment'
   styleUrls: ['./forms.css']
 })
 export class PaymentFormComponent {
-  model: Payment = { amount: 0, date: new Date()};
+  private model: Payment;
+  private submitted = false;
 
-  submitted = false;
+  constructor(private paymentService: PaymentService) {
+    this.newPayment();
+  }
 
-  onSubmit() { this.submitted = true; console.log("Andrew bird"); }
-
-  // TODO: Remove this when we're done
-  get diagnostic() { return JSON.stringify(this.model); }
+  onSubmit() {
+    this.submitted = true;
+    this.paymentService.createNewPayment(this.model);
+  }
 
   newPayment(): void {
-    this.model = { amount: 0, date: new Date()};
+    this.submitted = false;
+    this.model = { amount: null, date: null};
   }
 }
