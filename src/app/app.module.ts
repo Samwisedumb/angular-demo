@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 import { RouterModule }   from '@angular/router';
+import { HttpModule }    from '@angular/http';
 
 import { PaymentService } from './payments/shared/payment.service'
 
@@ -20,6 +21,7 @@ import { PaymentFormComponent } from './payments/payment-form.component'
   imports: [
     BrowserModule,
     FormsModule,
+    HttpModule,
     RouterModule.forRoot([
       {
         path: 'payments', component: PaymentsComponent

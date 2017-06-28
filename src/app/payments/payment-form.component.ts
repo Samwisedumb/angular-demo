@@ -12,8 +12,12 @@ export class PaymentFormComponent {
 
   submitted = false;
 
-  onSubmit() { this.submitted = true; }
+  onSubmit() { this.submitted = true; console.log("Andrew bird"); }
 
   // TODO: Remove this when we're done
   get diagnostic() { return JSON.stringify(this.model); }
+
+  newPayment(): void {
+    this.model = { amount: 0, date: new Date()};
+  }
 }
