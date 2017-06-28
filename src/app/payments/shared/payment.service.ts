@@ -17,7 +17,7 @@ export class PaymentService {
     return this.http.get(this.getPaymentsUrl)
                .toPromise()
                .then(response => {
-                 return response.json() as Payment[];
+                 return response.json().data as Payment[];
                });
   }
 
