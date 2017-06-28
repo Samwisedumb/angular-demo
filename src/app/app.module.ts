@@ -8,20 +8,24 @@ import { PaymentService } from './payments/shared/payment.service'
 import { AppComponent } from './app.component';
 import { PaymentDetailComponent } from './payments/payment-detail.component';
 import { PaymentsComponent } from './payments/payments.component'
+import { PaymentFormComponent } from './payments/payment-form.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     PaymentDetailComponent,
-    PaymentsComponent
+    PaymentsComponent,
+    PaymentFormComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot([
       {
-        path: 'payments',
-        component: PaymentsComponent
+        path: 'payments', component: PaymentsComponent
+      },
+      {
+        path: 'newPayment', component: PaymentFormComponent
       }
     ])
   ],

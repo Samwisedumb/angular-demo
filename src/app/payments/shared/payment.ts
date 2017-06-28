@@ -1,4 +1,3 @@
 export class Payment {
-  amount: number;
-  date: Date;
+  constructor(public amount: number, public date: Date) { };
 }
