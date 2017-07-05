@@ -13,11 +13,11 @@ export class PaymentService {
 
   constructor(private http: Http) { }
 
-  public getPayments(): Promise<Payment[]> {
+  public getPayments(): Promise<Array<Payment>> {
     return this.http.get(this.getPaymentsUrl)
                .toPromise()
                .then(response => {
-                 return response.json().data as Payment[];
+                 return response.json().data as Array<Payment>;
                })
                .catch(this.handleError);
   }
