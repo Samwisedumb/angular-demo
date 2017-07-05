@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 import { RouterModule }   from '@angular/router';
 import { HttpModule }    from '@angular/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { PaymentService } from './payments/shared/payment.service'
 
@@ -22,6 +23,7 @@ import { PaymentFormComponent } from './payments/payment-form.component'
     BrowserModule,
     FormsModule,
     HttpModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       {
         path: 'payments', component: PaymentsComponent
